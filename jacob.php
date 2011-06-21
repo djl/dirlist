@@ -36,7 +36,7 @@ function get_files($dir) {
     global $img_extensions;
     global $display_directories;
 
-    $files = array('images' => array(), 'other' => array(), 'directories' => array());
+    $files = array();
     $pattern = sprintf("/\.%s$/i", implode("|", $img_extensions));
 
     if ($handle = opendir($dir)) {
@@ -99,7 +99,6 @@ if (isset($_GET['img'])) {
     <h1>Browsing <?php echo dirname($_SERVER['PHP_SELF']) ?></h1>
     <?php if (!is_null($current)): ?><img src="<?php echo $current ?>"><?php endif;?>
     <?php foreach ($files as $group => $groupfiles): ?>
-        <?php if (count($groupfiles) == 0) { continue; } ?>
         <?php $open = false; ?>
         <?php $pos = 1; ?>
         <?php $i = 0; ?>
