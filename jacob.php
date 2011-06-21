@@ -80,10 +80,10 @@ if (isset($_GET['img'])) {
     <style type="text/css">
         *{margin:0;padding:0;}
         html{color:black;background:white;}
-        body{font: normal normal normal 10px/17px monaco, 'Deja Vu Sans Mono', 'andale mono', 'courier new', monospace;padding:30px;}
-        h1,h2,p,ul{font-size:inherit;font-weight:normal;margin-bottom:1em;}
+        body{font: 11px/16px Verdana, "Bitstream Vera Sans", sans-serif;padding:30px;}
+        h1,h2,h3{font-size:inherit;}
         h1{background:black;color:white;margin:-30px -30px 30px -30px;padding:10px;}
-        h2{background:#ddd;display:inline;padding:5px;}
+        h2,h3{background:#ddd;display:inline;margin-bottom:30px;padding:5px;}
         a:link,a:visited{color:black;}
         a:hover,a:active,a:focus{color:#f60;}
         ul{margin:3em 0 0 -1em;}
@@ -92,12 +92,12 @@ if (isset($_GET['img'])) {
         table{margin:10px 10px 30px;}
         td{vertical-align:top;}
         td.light{color:#999;}
-        img{display:block;margin-bottom:50px;}
+        img{display:block;margin:30px 0 50px;}
     </style>
 </head>
 <body>
     <h1>Browsing <?php echo dirname($_SERVER['PHP_SELF']) ?></h1>
-    <?php if (!is_null($current)): ?><img src="<?php echo $current ?>"><?php endif;?>
+    <?php if (!is_null($current)): ?><h2><?php echo $current ?></h2><img src="<?php echo $current ?>"><?php endif;?>
     <?php foreach ($files as $group => $groupfiles): ?>
         <?php $open = false; ?>
         <?php $pos = 1; ?>
@@ -105,7 +105,7 @@ if (isset($_GET['img'])) {
         <?php $filecount = count($groupfiles); ?>
         <?php $files_per_column = ceil($filecount / $columns); ?>
         <?php if ($filecount <= $columns) { $files_per_column = $filecount; }?>
-        <h2><?php echo $group; ?></h2>
+        <h3><?php echo $group; ?></h3>
         <table><tr>
         <?php foreach($groupfiles as $name => $size): ?>
             <?php if (!$open): $open = true; ?><td><table><?php endif; ?>
