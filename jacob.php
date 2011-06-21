@@ -21,6 +21,11 @@ $columns = 4;
 // display directories?
 $display_directories = true;
 
+// max image width
+// set this to a non-integer value to disable
+$max_image_width = 640;
+
+
 function hfilesize($bytes, $precision = 2) {
     $units = array('B', 'KB', 'MB', 'GB', 'TB');
     $bytes = max($bytes, 0);
@@ -92,7 +97,7 @@ if (isset($_GET['img'])) {
         table{margin:10px 10px 30px;}
         td{vertical-align:top;}
         td.light{color:#999;}
-        img{display:block;margin:30px 0 50px;}
+        img{display:block;margin:30px 0 50px;<?php if(is_int($max_image_width)): ?>max-width:<?php echo $max_image_width; ?>px;<?php endif; ?>}
     </style>
 </head>
 <body>
