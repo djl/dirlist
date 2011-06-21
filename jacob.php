@@ -87,8 +87,9 @@ if (isset($_GET['img'])) {
         html{color:black;background:white;}
         body{font: 11px/16px Verdana, "Bitstream Vera Sans", sans-serif;padding:30px;}
         h1,h2,h3{font-size:inherit;}
-        h1{background:black;color:white;margin:-30px -30px 30px -30px;padding:10px;}
-        h2,h3{background:#ddd;display:inline;margin-bottom:30px;padding:5px;}
+        h1,h3{background:black;color:white;margin:-30px -30px 30px -30px;padding:10px;}
+        h2{font-size:14px;}
+        h3{background:#ddd;color:#333;display:inline;margin-bottom:30px;padding:10px 10px 10px 50px;}
         a:link,a:visited{color:black;}
         a:hover,a:active,a:focus{color:#f60;}
         ul{margin:3em 0 0 -1em;}
