@@ -5,12 +5,8 @@
 // http://github.com/xvzf/jacob
 //
 
-$parts = explode('/', $_SERVER['PHP_SELF']);
-$count = count($parts) - 1;
-$self = $parts[$count];
-
 // ignore this stuff
-$ignore = array('.', '..', '.htaccess', $self);
+$ignore = array('.', '..', '.htaccess', basename(__FILE__));
 
 // known image extensions, case-insensitive
 $img_extensions = array('bmp', 'gif', 'png', 'jpg', 'jpeg');
