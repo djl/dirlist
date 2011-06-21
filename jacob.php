@@ -104,9 +104,7 @@ if (isset($_GET['img'])) {
     <h1>Browsing <?php echo dirname($_SERVER['PHP_SELF']) ?></h1>
     <?php if (!is_null($current)): ?><h2><?php echo $current ?></h2><img src="<?php echo $current ?>"><?php endif;?>
     <?php foreach ($files as $group => $groupfiles): ?>
-        <?php $open = false; ?>
-        <?php $pos = 1; ?>
-        <?php $i = 0; ?>
+        <?php $open = false; $pos = 1; ?>
         <?php $filecount = count($groupfiles); ?>
         <?php $files_per_column = ceil($filecount / $columns); ?>
         <?php if ($filecount <= $columns) { $files_per_column = $filecount; }?>
@@ -117,7 +115,6 @@ if (isset($_GET['img'])) {
             <?php if ($pos > $files_per_column): $open = true; $pos = 1; ?></table></td><td><table><?php endif; ?>
             <tr><td><a href="<?php if(array_key_exists($name, $files['images'])): echo $_SERVER['PHP_SELF'] . '?img=' ?><?php endif; ?><?php echo $name ?>"><?php echo $name; ?><?php if(array_key_exists($name, $files['images'])): ?><a href="<?php echo $_SERVER['PHP_SELF'] ?>?img=<?php echo $name ?>"></a><?php endif; ?></td><td class="light"><?php if(!is_null($size)): ?>(<?php echo $size; ?>)<?php endif; ?></td></tr>
             <?php $pos++; ?>
-            <?php $i++; ?>
         <?php endforeach; ?>
         <?php if ($open): ?></td></table><?php endif; ?>
         </tr>
