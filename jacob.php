@@ -85,13 +85,10 @@ if (isset($_GET['img'])) {
         h1,h2,h3{font-size:inherit;}
         h1,h3{background:black;color:white;margin:-30px -30px 30px -30px;padding:10px;}
         h2{font-size:14px;}
-        h3{background:#ddd;color:#333;display:inline;margin-bottom:30px;padding:10px 10px 10px 50px;}
+        h3{display:inline;margin-bottom:30px;padding:10px 10px 10px 35px;}
         a:link,a:visited{color:black;}
         a:hover,a:active,a:focus{color:#f60;}
-        ul{margin:3em 0 0 -1em;}
-        ul li{line-height:2em;list-style-type: none;}
-        ul li:before{content:"* ";}
-        table{margin:10px 10px 30px;}
+        table{margin:10px 0 30px;}
         td{vertical-align:top;}
         td.light{color:#999;}
         img{display:block;margin:30px 0 50px;<?php if(is_int($max_image_width)): ?>max-width:<?php echo $max_image_width; ?>px;<?php endif; ?>}
