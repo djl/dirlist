@@ -85,7 +85,7 @@ if (isset($_GET['img'])) {
         h1,h2,h3{font-size:inherit;}
         h1,h3{background:black;color:white;margin:-30px -30px 30px -30px;padding:10px;}
         h2{font-size:14px;}
-        h3{display:inline;margin-bottom:30px;padding:10px 10px 10px 35px;}
+        h3{display:inline;padding:10px 10px 10px 35px;}
         a:link,a:visited{color:black;}
         a:hover,a:active,a:focus{color:#f60;}
         table{margin:10px 0 30px;}
