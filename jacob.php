@@ -105,9 +105,10 @@ if (isset($_GET['img'])) {
         <h3><?php echo $group; ?></h3>
         <table><tr>
         <?php foreach($groupfiles as $name => $size): ?>
+            <?php $is_img = array_key_exists($name, $files['images']);?>
             <?php if (!$open): $open = true; ?><td><table><?php endif; ?>
             <?php if ($pos > $files_per_column): $open = true; $pos = 1; ?></table></td><td><table><?php endif; ?>
-            <tr><td><a href="<?php if(array_key_exists($name, $files['images'])): echo $_SERVER['PHP_SELF'] . '?img=' ?><?php endif; ?><?php echo $name ?>"><?php echo $name; ?><?php if(array_key_exists($name, $files['images'])): ?><a href="<?php echo $_SERVER['PHP_SELF'] ?>?img=<?php echo $name ?>"></a><?php endif; ?></td><td class="light"><?php if(!is_null($size)): ?>(<?php echo $size; ?>)<?php endif; ?></td></tr>
+            <tr><td><a href="<?php if($is_img): echo $_SERVER['PHP_SELF'] . '?img=' ?><?php endif; ?><?php echo $name ?>"><?php echo $name; ?><?php if($is_img): ?><a href="<?php echo $_SERVER['PHP_SELF'] ?>?img=<?php echo $name ?>"></a><?php endif; ?></td><td class="light"><?php if(!is_null($size)): ?>(<?php echo $size; ?>)<?php endif; ?></td></tr>
             <?php $pos++; ?>
         <?php endforeach; ?>
         <?php if ($open): ?></td></table><?php endif; ?>
