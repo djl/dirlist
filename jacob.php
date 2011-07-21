@@ -2,7 +2,7 @@
 
 //
 // And Isaac begat Jacob
-// http://github.com/xvzf/jacob
+// http://github.com/djl/jacob
 //
 
 // ignore this stuff
