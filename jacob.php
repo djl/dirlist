@@ -1,5 +1,4 @@
 <?php
-
 //
 // And Isaac begat Jacob
 // http://github.com/djl/jacob
@@ -21,7 +20,6 @@ $display_directories = true;
 // set this to a non-integer value to disable
 $max_image_width = 640;
 
-
 function hfilesize($bytes, $precision = 2) {
     $units = array('B', 'KB', 'MB', 'GB', 'TB');
     $bytes = max($bytes, 0);
@@ -32,24 +30,16 @@ function hfilesize($bytes, $precision = 2) {
     return round($bytes, $precision) . $units[$pow];
 }
 
-function get_files($dir) {
-    global $ignore;
-    global $img_extensions;
-    global $display_directories;
-
-    $files = array();
+function get_files($dir, $ignore, $img_extensions, $display_directories) {
+    $files = array('images' => array());
     $pattern = sprintf("/\.%s$/i", implode("|", $img_extensions));
-
     if ($handle = opendir($dir)) {
-        while (false !== ($file = readdir($handle))) {
-            if (in_array($file, $ignore)) {
-                continue;
-            }
+        while (($file = readdir($handle)) !== false) {
+            if (in_array($file, $ignore)) continue;
             if (is_dir($file) && $display_directories) {
                 $files['directories'][$file] = null;
                 continue;
             }
-
             $pile = preg_match($pattern, $file) ? "images" : "other";
             $files[$pile][$file] = hfilesize(filesize($file));
             ksort($files[$pile]);
@@ -58,8 +48,7 @@ function get_files($dir) {
     return $files;
 }
 
-$files = get_files(getcwd());
-
+$files = get_files(getcwd(), $ignore, $img_extensions, $display_directories);
 $current = null;
 if (isset($_GET['img'])) {
     if (array_key_exists($_GET['img'], $files['images'])) {
@@ -71,7 +60,6 @@ if (isset($_GET['img'])) {
         $current = key($files['images']);
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,8 +68,7 @@ if (isset($_GET['img'])) {
     <title>Browsing <?php echo dirname($_SERVER['PHP_SELF']) ?></title>
     <style type="text/css">
         *{margin:0;padding:0;}
-        html{color:black;background:white;}
-        body{font: 11px/16px Verdana, "Bitstream Vera Sans", sans-serif;padding:30px;}
+        body{background:white;color:black;font:11px/16px Verdana,"Bitstream Vera Sans",sans-serif;padding:30px;}
         h1,h2,h3{font-size:inherit;}
         h1,h3{background:black;color:white;margin:-30px -30px 30px -30px;padding:10px;}
         h2{font-size:14px;}
@@ -98,10 +85,11 @@ if (isset($_GET['img'])) {
     <h1>Browsing <?php echo dirname($_SERVER['PHP_SELF']) ?></h1>
     <?php if (!is_null($current)): ?><h2><?php echo $current ?></h2><img src="<?php echo $current ?>"><?php endif;?>
     <?php foreach ($files as $group => $groupfiles): ?>
+        <?php if(count($groupfiles) == 0) continue; ?>
         <?php $open = false; $pos = 1; ?>
         <?php $filecount = count($groupfiles); ?>
         <?php $files_per_column = ceil($filecount / $columns); ?>
-        <?php if ($filecount <= $columns) { $files_per_column = $filecount; }?>
+        <?php if ($filecount <= $columns) $files_per_column = $filecount; ?>
         <h3><?php echo $group; ?></h3>
         <table><tr>
         <?php foreach($groupfiles as $name => $size): ?>
@@ -112,8 +100,7 @@ if (isset($_GET['img'])) {
             <?php $pos++; ?>
         <?php endforeach; ?>
         <?php if ($open): ?></td></table><?php endif; ?>
-        </tr>
-        </table>
+        </tr></table>
     <?php endforeach; ?>
 </body>
 </html>
