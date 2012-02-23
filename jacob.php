@@ -8,7 +8,7 @@
 $ignore = array('.', '..', '.htaccess', basename(__FILE__));
 
 // known image extensions, case-insensitive
-$img_extensions = array('bmp', 'gif', 'png', 'jpg', 'jpeg');
+$img_extensions = array('bmp', 'gif', 'png', 'jpe?g');
 
 // number of columns
 $columns = 4;
