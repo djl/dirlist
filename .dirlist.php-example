@@ -1,0 +1,22 @@
+<?php
+// ignore this stuff
+// globbing allowed
+$ignore = array('.', '..', 'robots.txt', '.htaccess', basename(__FILE__));
+
+// number of columns
+$columns = 4;
+
+// display directories?
+$display_directories = true;
+
+// max image width
+// set this to a non-integer value to disable
+$max_image_width = 640;
+
+// file types
+$file_types = array(
+    'images' => array('bmp', 'gif', 'png', 'jpg', 'jpeg', 'png'),
+    'music' => array('mp3', 'flac'),
+);
+
+?>

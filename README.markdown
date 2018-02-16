@@ -1,4 +1,4 @@
-jacob
------
+dirlist
+-------
 
-Son of Isaac. Lister of directories.
+Directory lister.
